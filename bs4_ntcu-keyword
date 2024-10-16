@@ -1,0 +1,17 @@
+#AMA111803數三甲巫育宏
+import requests
+from bs4 import BeautifulSoup
+url = 'https://2023ntcu.ntcu.edu.tw/'
+html = requests.get(url)
+html.encording = "utf-8"
+#print(html.text)
+soup = BeautifulSoup(html.text, 'html.parser')
+#print(soup.prettify())
+#htmllist = html.text.splitlines()
+#print(htmllist)
+n=0
+keyword = "教育"
+for text in soup.stripped_strings:
+    if keyword in text:
+        n = n + 1
+print("找到{}次".format(n))
